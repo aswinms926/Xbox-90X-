@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE DARKROOM - 90s</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #00FF00;
+            font-family: "Courier New", monospace;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='10' height='10' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 10 0 L 0 0 0 10' fill='none' stroke='%2333FF33' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E");
+        }
+        .container {
+            background-color: rgba(0,0,0,0.7);
+            border: 3px solid #00FF00;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 0 20px #00FF00;
+        }
+        h1 {
+            font-size: 36px;
+            text-shadow: 2px 2px #00FF00;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .dark-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .dark-card {
+            background-color: rgba(0,255,0,0.1);
+            border: 2px dashed #00FF00;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .dark-card:hover {
+            background-color: rgba(0,255,0,0.2);
+            transform: scale(1.05);
+        }
+        .dark-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0,255,0,0.05) 0px,
+                rgba(0,255,0,0.05) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            animation: scan 3s linear infinite;
+            z-index: 1;
+        }
+        @keyframes scan {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .dark-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px;
+            background-color: #00FF00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            border-radius: 10px;
+            color: black;
+        }
+        .dark-details {
+            display: none;
+            background-color: rgba(0,0,0,0.8);
+            border: 2px dashed #00FF00;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .cyber-button {
+            background-color: #00FF00;
+            color: black;
+            border: 2px solid black;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-family: "Courier New", monospace;
+            transition: all 0.3s ease;
+        }
+        .cyber-button:hover {
+            background-color: black;
+            color: #00FF00;
+            border-color: #00FF00;
+        }
+        .system-message {
+            color: yellow;
+            font-size: 18px;
+            margin: 10px 0;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>THE DARKROOM</h1>
+        <div class="system-message">🕵️ COVERT NETWORK INITIALIZING... 🕵️</div>
+        <div class="dark-grid" id="dark-grid">
+            <div class="dark-card" onclick="showDarkDetails('intel')">
+                <div class="dark-icon">🕵️</div>
+                <h3>INTEL SECTOR</h3>
+                <div class="dark-details" id="intel-details">
+                    <h4>CLASSIFIED INTELLIGENCE PROTOCOL</h4>
+                    <p>SECTOR: INFORMATION GATHERING</p>
+                    <p>ACCESS: TOP SECRET CLEARANCE</p>
+                    <p>FEATURES: ADVANCED SURVEILLANCE</p>
+                </div>
+            </div>
+            <div class="dark-card" onclick="showDarkDetails('crypto')">
+                <div class="dark-icon">🔐</div>
+                <h3>CRYPTO ZONE</h3>
+                <div class="dark-details" id="crypto-details">
+                    <h4>ENCRYPTION RESEARCH NETWORK</h4>
+                    <p>SECTOR: CRYPTOGRAPHIC DEVELOPMENT</p>
+                    <p>ACCESS: SECURE PROTOCOLS</p>
+                    <p>FEATURES: NEXT-GEN ENCRYPTION</p>
+                </div>
+            </div>
+            <div class="dark-card" onclick="showDarkDetails('ops')">
+                <div class="dark-icon">💡</div>
+                <h3>DARK OPS</h3>
+                <div class="dark-details" id="ops-details">
+                    <h4>COVERT OPERATIONS MATRIX</h4>
+                    <p>SECTOR: SPECIAL MISSIONS</p>
+                    <p>ACCESS: SHADOW PROTOCOL</p>
+                    <p>FEATURES: STEALTH TECHNOLOGIES</p>
+                </div>
+            </div>
+        </div>
+        <button class="cyber-button" onclick="randomDarkHighlight()">RANDOMIZE SECTOR</button>
+    </div>
+    <script>
+        function showDarkDetails(sectorType) {
+            document.querySelectorAll('.dark-details').forEach(detail => {
+                detail.style.display = 'none';
+            });
+            const sectorDetails = document.getElementById(`${sectorType}-details`);
+            sectorDetails.style.display = 'block';
+        }
+
+        function randomDarkHighlight() {
+            const darkCards = document.querySelectorAll('.dark-card');
+            const randomSector = darkCards[Math.floor(Math.random() * darkCards.length)];
+            randomSector.click();
+        }
+
+        const messages = [
+            "ACCESSING CLASSIFIED NETWORKS...",
+            "ENCRYPTING COMMUNICATION CHANNELS...",
+            "INITIALIZING COVERT PROTOCOLS...",
+            "SHADOW NETWORK ONLINE!"
+        ];
+        
+        function randomConsoleMessage() {
+            const message = messages[Math.floor(Math.random() * messages.length)];
+            console.log(message);
+        }
+        
+        setInterval(randomConsoleMessage, 3000);
+    </script>
+</body>
+</html>

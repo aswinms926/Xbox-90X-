@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>THE MACHINE - 90s</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #00FF00;
+            font-family: "Courier New", monospace;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='10' height='10' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 10 0 L 0 0 0 10' fill='none' stroke='%2333FF33' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E");
+        }
+        h1 {
+            font-size: 36px;
+            text-shadow: 2px 2px #00FF00;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .container {
+            background-color: rgba(0,0,0,0.7);
+            border: 3px solid #00FF00;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 0 20px #00FF00;
+        }
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(61px, 9999px, 52px, 0); }
+            5% { clip: rect(33px, 9999px, 144px, 0); }
+            10% { clip: rect(121px, 9999px, 46px, 0); }
+            15% { clip: rect(56px, 9999px, 67px, 0); }
+            20% { clip: rect(4px, 9999px, 77px, 0); }
+            25% { clip: rect(95px, 9999px, 53px, 0); }
+            30% { clip: rect(46px, 9999px, 38px, 0); }
+            35% { clip: rect(67px, 9999px, 89px, 0); }
+            40% { clip: rect(10px, 9999px, 111px, 0); }
+            45% { clip: rect(66px, 9999px, 22px, 0); }
+            50% { clip: rect(96px, 9999px, 77px, 0); }
+            55% { clip: rect(62px, 9999px, 12px, 0); }
+            60% { clip: rect(34px, 9999px, 57px, 0); }
+            65% { clip: rect(82px, 9999px, 44px, 0); }
+            70% { clip: rect(64px, 9999px, 97px, 0); }
+            75% { clip: rect(66px, 9999px, 5px, 0); }
+            80% { clip: rect(67px, 9999px, 63px, 0); }
+            85% { clip: rect(36px, 9999px, 11px, 0); }
+            90% { clip: rect(54px, 9999px, 53px, 0); }
+            95% { clip: rect(61px, 9999px, 37px, 0); }
+            100% { clip: rect(68px, 9999px, 89px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(29px, 9999px, 61px, 0); }
+            5% { clip: rect(58px, 9999px, 73px, 0); }
+            10% { clip: rect(31px, 9999px, 37px, 0); }
+            15% { clip: rect(12px, 9999px, 94px, 0); }
+            20% { clip: rect(4px, 9999px, 59px, 0); }
+            25% { clip: rect(85px, 9999px, 49px, 0); }
+            30% { clip: rect(22px, 9999px, 71px, 0); }
+            35% { clip: rect(9px, 9999px, 44px, 0); }
+            40% { clip: rect(67px, 9999px, 33px, 0); }
+            45% { clip: rect(54px, 9999px, 82px, 0); }
+            50% { clip: rect(24px, 9999px, 59px, 0); }
+            55% { clip: rect(72px, 9999px, 37px, 0); }
+            60% { clip: rect(29px, 9999px, 64px, 0); }
+            65% { clip: rect(3px, 9999px, 25px, 0); }
+            70% { clip: rect(47px, 9999px, 102px, 0); }
+            75% { clip: rect(52px, 9999px, 77px, 0); }
+            80% { clip: rect(33px, 9999px, 14px, 0); }
+            85% { clip: rect(56px, 9999px, 55px, 0); }
+            90% { clip: rect(71px, 9999px, 8px, 0); }
+            95% { clip: rect(21px, 9999px, 95px, 0); }
+            100% { clip: rect(39px, 9999px, 61px, 0); }
+        }
+        .cyber-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px dashed #00FF00;
+        }
+        .under-construction {
+            font-size: 24px;
+            color: yellow;
+            margin: 20px 0;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .cyber-button {
+            background-color: #00FF00;
+            color: black;
+            border: 2px solid black;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-family: "Courier New", monospace;
+            transition: all 0.3s ease;
+        }
+        .cyber-button:hover {
+            background-color: black;
+            color: #00FF00;
+            border-color: #00FF00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="glitch-text" data-text="THE MACHINE">THE MACHINE</h1>
+        
+        <div class="cyber-section">
+            <h2>CYBER KNOWLEDGE INTERFACE</h2>
+            <p>WELCOME TO THE ULTIMATE MACHINE OF KNOWLEDGE!</p>
+            
+            <div class="under-construction">
+                🖥️ SYSTEM INITIALIZING... 🖥️
+            </div>
+            
+            <p>PREPARE TO INTERFACE WITH THE MOST ADVANCED INFORMATION SYSTEM OF THE 90s!</p>
+            
+            <div>
+                <button class="cyber-button" onclick="alert('SYSTEM CONNECTION ESTABLISHED!')">CONNECT</button>
+                <button class="cyber-button" onclick="alert('DOWNLOADING CYBER KNOWLEDGE...')">DOWNLOAD INFO</button>
+            </div>
+        </div>
+        
+        <div class="cyber-section">
+            <h2>SYSTEM SPECIFICATIONS</h2>
+            <p>PROCESSOR: CYBER-MATRIX 3000</p>
+            <p>MEMORY: UNLIMITED (90s STYLE)</p>
+            <p>CONNECTION: HYPER-NET PROTOCOL</p>
+        </div>
+    </div>
+    
+    <script>
+        const messages = [
+            "ACCESSING MAINFRAME...",
+            "QUANTUM DATA TRANSFER IN PROGRESS...",
+            "CYBER NEURONS ACTIVATING...",
+            "MATRIX CONNECTION STABLE!"
+        ];
+        
+        function randomConsoleMessage() {
+            const message = messages[Math.floor(Math.random() * messages.length)];
+            console.log(message);
+        }
+        
+        setInterval(randomConsoleMessage, 3000);
+    </script>
+</body>
+</html>
